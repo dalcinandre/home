@@ -45,6 +45,9 @@
           </button>
         </div>
       </div>
+      <div class="navbar navbar-fixed-bottom">
+        <div id="chart_div"></div>
+      </div>
     </div>
 
     <script>
@@ -62,19 +65,66 @@
     <script src="/js/bootstrap.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/vue.js"></script>
+    <!-- <script src="/js/charts/loader.js"></script> -->
     <script>
       const socket = io()
-const app = new Vue({
-  el: '#app',
-  data: {
-    nome: 'oi mundo vue js'
-  },
-  methods: {
-    cliqueme: () => {
-      socket.emit( 'portao', { nome: this.nome } )
-    }
-  }
-})
-</script>
+
+      /*
+      let temp = 0
+
+      socket.on( 'temp', ( data ) => temp = data.temp )
+
+      const execTemp = () => {
+        socket.emit( 'temp' )
+      }
+      */
+
+      const app = new Vue({
+        el: '#app',
+        data() {
+          return {
+          }
+        },
+        methods: {
+          cliqueme: () => {
+            socket.emit( 'portao' )
+          }
+        }
+      })
+
+      /*
+      google.charts.load( 'current', { 'packages': [ 'gauge' ] } )
+
+      const drawChart = () => {
+        let data = google.visualization.arrayToDataTable( [
+          [ 'Label', 'Value' ],
+          [ 'CPU Temp.', temp ]
+        ])
+
+        let options = {
+          width: 400,
+          height: 120,
+          redFrom: 90,
+          redTo: 100,
+          yellowFrom:75,
+          yellowTo: 90,
+          minorTicks: 5
+        }
+
+        let chart = new google.visualization.Gauge( document.querySelector( '#chart_div' ) )
+
+        chart.draw( data, options )
+
+        setInterval( () => {
+          execTemp()
+          data.setValue( 0, 1, temp )
+          chart.draw( data, options )
+        }, 2000 )
+      }
+
+      google.charts.setOnLoadCallback( drawChart )
+      */
+
+    </script>
   </body>
 </html>
