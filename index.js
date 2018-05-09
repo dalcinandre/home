@@ -21,7 +21,8 @@ app.use( '/js', express.static( `${ __dirname }/node_modules/bootstrap/dist/js` 
 app.use( '/js', express.static( `${ __dirname }/node_modules/jquery/dist` ))
 app.use( '/js', express.static( `${ __dirname }/node_modules/vue/dist` ))
 app.use( '/css', express.static( `${ __dirname }/node_modules/bootstrap/dist/css` ))
-// app.use( '/css', express.static( `${ __dirname }/node_modules/material-design-icons` ))
+app.use( '/css', express.static( `${ __dirname }/node_modules/open-iconic/font/css` ))
+app.use( '/fonts', express.static( `${ __dirname }/node_modules/open-iconic/font/fonts` ))
 
 app.use( express.static( `${ __dirname }/static` ) )
 
@@ -75,10 +76,10 @@ https.listen( 4443, () => {
 
 process.on( 'SIGINT', () => {
   portao.unexport()
-//   aberto.unexport()
-//   fechado.unexport()
+  //   aberto.unexport()
+  //   fechado.unexport()
 
-//   btn_aberto.unexport()
-//   btn_fechado.unexport()
+  //   btn_aberto.unexport()
+  //   btn_fechado.unexport()
   process.exit( 0 )
 } )
